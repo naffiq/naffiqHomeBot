@@ -23,5 +23,11 @@ bot.onText(/\/photo/, (msg, match) => {
 
 bot.onText(/\/volume (.+)/, (msg, match) => {
 	var chatId = msg.chat.id;
-	console.log(match);
+
+	if (typeof match[1] !== undefined) {
+		let level = match[1];
+		exec(`amixer set PCM ${level}%`, (error, stdout, stderr) => {
+			bot.sendMessage(chatId, `Volume set to ${level}%`);
+		});
+	}
 });

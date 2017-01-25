@@ -41,6 +41,20 @@ api.on('message', (message) => {
 
 	// Setting a volume
 	if (message.text.includes('/volume')) {
+		let level = parseInt(message.text.remove('/volume'));
+		console.log(level);
+		// exec('fswebcam -p YUYV photo.jpg', (error, stdout, stderr) => {
+			
+		// 	api.sendMessage({
+		// 		'chat_id': message.chat.id,
+		// 		'text': 'There was an error making a photo'
+		// 	});
+
+		// });
+	}
+
+	// Play youtube video
+	if (message.text.includes('youtube')) {
 		console.log(message);
 	}
 });

@@ -9,6 +9,6 @@
   "author": "naffiq",
   "license": "MIT",
   "dependencies": {
-    "telegram-bot-api": "^1.2.0"
+    "node-telegram-bot-api": "^0.26.0"
   }
 }

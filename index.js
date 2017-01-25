@@ -38,7 +38,15 @@ bot.onText(/http:\/\/www\.youtube\.com\/watch\?v=(.+)/, (msg, match) => {
 	if (typeof match[0] !== undefined) {
 		let url = match[0];
 		exec(`chromium-browser --app='${url}'`, (error, stdout, stderr) => {
-			bot.sendMessage(chatId, `Video finished playback`);
+			bot.sendMessage(chatId, `Video is now live on your screen`);
 		});
 	}
+});
+
+bot.onText(/\/kill-browser/, (msg, match) => {
+	var chatId = msg.chat.id;
+
+	exec(`pkill chromium`, (error, stdout, stderr) => {
+		bot.sendMessage(chatId, `Chromium browser is now closed`);
+	});
 });

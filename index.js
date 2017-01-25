@@ -43,7 +43,7 @@ bot.onText(/\/volume (.+)/, (msg, match) => {
 	}
 });
 
-bot.onText(/http:\/\/www.youtube.com\/watch?v=(.+)/, (msg, match) => {
+bot.onText(/http:\/\/www\.youtube\.com\/watch\?v=(.+)/, (msg, match) => {
 	var chatId = msg.chat.id;
 
 	if (typeof match[0] !== undefined) {

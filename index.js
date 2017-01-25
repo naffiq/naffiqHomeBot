@@ -12,9 +12,14 @@ var api = new telegram({
 
 api.on('message', (message) => {
 	if (message.text === '/photo') {
+		console.log(message);
 
 		exec('fswebcam -p YUYV photo.jpg', (error, stdout, stderr) => {
-			console.log(stdout);
+
+			// api.sendPhoto({
+				
+			// });
+
 		});
 
 	}

@@ -47,7 +47,14 @@ bot.onText(/http:\/\/www\.youtube\.com\/watch\?v=(.+)/, (msg, match) => {
 	}
 });
 
-bot.onText(/\/kill-browser/, (msg, match) => {
+bot.onText(/\/fullscreen/, (msg, match) => {
+	var chatId = msg.chat.id;
+	exec(`xdotool key F11`, (error, stdout, stderr) => {
+		bot.sendMessage(chatId, `Fullcreen mode is on (whatever is there)`);
+	});	
+});
+
+bot.onText(/\/kill_browser/, (msg, match) => {
 	var chatId = msg.chat.id;
 
 	exec(`pkill chromium`, (error, stdout, stderr) => {

@@ -20,12 +20,18 @@ api.on('message', (message) => {
 		}).then(() => {
 			exec('fswebcam -p YUYV photo.jpg', (error, stdout, stderr) => {
 			
-				console.log(error || 'Alright');
-				// api.sendPhoto({
-				// 	chat_id: message.chat.id,
-				// 	caption: 'Photo of my home',
-				// 	photo: './photo.jpg'
-				// }).then();
+				if (!error) {
+					api.sendPhoto({
+						chat_id: message.chat.id,
+						caption: 'Photo of my home',
+						photo: './photo.jpg'
+					});
+				} else {
+					api.sendMessage({
+						'chat_id': message.chat.id,
+						'text': 'There was an error sending a photo'
+					})
+				}
 
 			});
 		});

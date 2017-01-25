@@ -44,6 +44,18 @@ bot.onText(/http:\/\/www\.youtube\.com\/watch\?v=(.+)/, (msg, match) => {
 	}
 });
 
+bot.onText(/\/youtube (.+)/, (msg, match) => {
+	var chatId = msg.chat.id;
+
+	if (typeof match[1] !== undefined) {
+		let cmd = match[1];
+
+		if (cmd == 'f') {
+			exec(`xdotool key f`, (error, stdout, stderr) => {});	
+		}
+	}
+});
+
 bot.onText(/\/fullscreen/, (msg, match) => {
 	var chatId = msg.chat.id;
 	exec(`xdotool key F11`, (error, stdout, stderr) => {

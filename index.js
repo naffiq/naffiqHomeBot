@@ -39,9 +39,7 @@ bot.onText(/http:\/\/www\.youtube\.com\/watch\?v=(.+)/, (msg, match) => {
 		let url = match[0];
 		console.log(url);
 		bot.sendMessage(chatId, `Starting video playback`);	
-		exec(`chromium-browser --app='http://www.youtube.com/watch_popup?v=${url}'`, (error, stdout, stderr) => {
-			bot.sendMessage(chatId, `Video playback is over`);
-		});
+		exec(`chromium-browser --app='${url}'`, (error, stdout, stderr) => {});
 		sleep(15);
 		exec(`xdotool key F`, (error, stdout, stderr) => {});	
 	}

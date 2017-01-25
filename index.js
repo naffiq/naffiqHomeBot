@@ -11,6 +11,8 @@ var api = new telegram({
 });
 
 api.on('message', (message) => {
+
+	// Taking a photo of my home
 	if (message.text === '/photo') {
 		console.log(message);
 
@@ -29,12 +31,16 @@ api.on('message', (message) => {
 				} else {
 					api.sendMessage({
 						'chat_id': message.chat.id,
-						'text': 'There was an error sending a photo'
+						'text': 'There was an error making a photo'
 					})
 				}
 
 			});
 		});
+	}
 
+	// Setting a volume
+	if (message.text.includes('/volume')) {
+		console.log(message);
 	}
 });

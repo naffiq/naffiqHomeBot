@@ -10,7 +10,7 @@ bot.onText(/\/photo/, (msg, match) => {
 
 	bot.sendMessage(chatId, 'Taking a photo...');
 	exec('fswebcam -p YUYV photo.jpg', (error, stdout, stderr) => {
-			
+
 		if (!error) {
 			bot.sendPhoto(chatId, './photo.jpg', {caption: 'Photo of my home'});
 		} else {
@@ -31,27 +31,27 @@ bot.onText(/\/volume (.+)/, (msg, match) => {
 	}
 });
 
-bot.onText(/http:\/\/www\.youtube\.com\/watch\?v=(.+)/, (msg, match) => {
+bot.onText(/(http|https):\/\/www\.youtube\.com\/watch\?v=(.+)/, (msg, match) => {
 	var chatId = msg.chat.id;
 
 	if (typeof match[0] !== undefined) {
 		let url = match[0];
 		console.log(url);
-		bot.sendMessage(chatId, `Starting video playback`);	
+		bot.sendMessage(chatId, `Starting video playback`);
 		exec(`chromium-browser --app='${url}'`, (error, stdout, stderr) => {});
 		sleep(15);
-		exec(`xdotool key F`, (error, stdout, stderr) => {});	
+		exec(`xdotool key F`, (error, stdout, stderr) => {});
 	}
 });
 
-bot.onText(/\/youtube (.+)/, (msg, match) => {
+bot.onText(/\/yt (.+)/, (msg, match) => {
 	var chatId = msg.chat.id;
 
 	if (typeof match[1] !== undefined) {
 		let cmd = match[1];
 
 		if (cmd == 'f') {
-			exec(`xdotool key f`, (error, stdout, stderr) => {});	
+			exec(`xdotool key f`, (error, stdout, stderr) => {});
 		}
 	}
 });
@@ -60,7 +60,7 @@ bot.onText(/\/fullscreen/, (msg, match) => {
 	var chatId = msg.chat.id;
 	exec(`xdotool key F11`, (error, stdout, stderr) => {
 		bot.sendMessage(chatId, `Fullcreen mode is on (whatever is there)`);
-	});	
+	});
 });
 
 bot.onText(/\/kill_browser/, (msg, match) => {
